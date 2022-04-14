@@ -1,11 +1,11 @@
 import "./Homepage.css"
-import logo from  "./../../R.png"
+import logo from "./../../R.png"
 import { v4 as uuid } from 'uuid';
 
-import {useEffect, useState} from "react"
+import { useEffect, useState } from "react"
 
 class team {
-    constructor (teamName) {
+    constructor(teamName) {
         this.id = uuid()
         this.teamName = teamName
         this.score = 0
@@ -14,7 +14,7 @@ class team {
 
 
 
-function ListTeams({teams, setTeams}) {
+function ListTeams({ teams, setTeams }) {
     const removeTeam = (e) => {
         const id = e.currentTarget.id
         const filtered = teams.filter(teamobj => teamobj.id !== id)
@@ -24,6 +24,7 @@ function ListTeams({teams, setTeams}) {
 
     return (
         <ul>
+            <p>Registrer lag</p>
             {teams.map((teamobj, i) =>
                 <li onClick={removeTeam} key={i} id={teamobj.id}>{teamobj.teamName}</li>
             )}
@@ -33,7 +34,7 @@ function ListTeams({teams, setTeams}) {
 
 
 
-function TeamsForm({setTeams}) {
+function TeamsForm({ setTeams }) {
 
     const [userInput, setUserInput] = useState('');
 
@@ -46,16 +47,16 @@ function TeamsForm({setTeams}) {
 
         if (!userInput) return
 
-        setTeams(currentteams => 
-            [ ...currentteams, new team(userInput) ]
+        setTeams(currentteams =>
+            [...currentteams, new team(userInput)]
         )
-        
+
         setUserInput("");
     }
 
     return (
         <form onSubmit={handleSubmit} className={"teams-form"}>
-            <input value={userInput} type="text" onChange={handleChange} placeholder="lagnavn"/>
+            <input value={userInput} type="text" onChange={handleChange} placeholder="lagnavn" />
             <button>Legg til</button>
         </form>
     )
@@ -63,7 +64,7 @@ function TeamsForm({setTeams}) {
 
 
 
-function SettingsForm({settigns, setSettings, setGameState}) {
+function SettingsForm({ settigns, setSettings, setGameState }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -74,38 +75,56 @@ function SettingsForm({settigns, setSettings, setGameState}) {
 
     return (
         <form onSubmit={handleSubmit} className={"settings-form"}>
-            <input type="radio" name="dict" defaultChecked/> UiB
-            <input type="radio" name="dict" /> NAOB
 
-            <input type="number" name="time" min="0" defaultValue="0" /> Klokke
+            <p>Velg ordbok</p>
 
-            <input type="checkbox" name="shortTerms" defaultChecked /> Halve poeng for forkortelser
+            <label class="container"> UiB
+                <input type="radio" defaultChecked name="radio" />
+                <span class="checkmark"></span>
+            </label>
+            <label class="container"> Naob
+                <input type="radio" name="radio" />
+                <span class="checkmark"></span>
+            </label>
 
-            <button>Start</button>
+            <p>Spille med klokke?</p>
+
+            <label class="container">
+                <input type="number" name="time" min="0" defaultValue="0" />  Minutter per trekk
+            </label>
+
+            <p>Halve poeng for forkortelser?</p>
+
+            <label class="container"> Jørgens regel
+                <input type="checkbox" defaultChecked />
+                <span class="checkmark"></span>
+            </label>
+
+            <button className="button-start">Start</button>
+
         </form>
     )
 }
 
 
 
-function Homepage({teams, setTeams, settings, setSettings, setGameState}) {
-    useEffect( () =>
+function Homepage({ teams, setTeams, settings, setSettings, setGameState }) {
+    useEffect(() =>
         setTeams([new team("Eira og Vårin"), new team("Bendik og Jørgen")])
-    , [])
+        , [])
 
     console.log(teams)
 
     return (
-      <div className="homepage">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>Rettferdig Scrabble</h1>
-        <p>Regsitrer lag, velg regler og ordbok.</p>
+        <div className="homepage">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1>Rettferdig Scrabble</h1>
 
-        <ListTeams teams={teams} setTeams={setTeams} />
-        <TeamsForm setTeams={setTeams} />
-        <SettingsForm settigns={settings} setSettings={setSettings} setGameState={setGameState} />
-      </div>
+            <ListTeams teams={teams} setTeams={setTeams} />
+            <TeamsForm setTeams={setTeams} />
+            <SettingsForm settigns={settings} setSettings={setSettings} setGameState={setGameState} />
+        </div>
     );
 }
-  
+
 export default Homepage;  
