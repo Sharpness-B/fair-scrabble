@@ -1,6 +1,6 @@
 import "./Homepage.css"
 import logo from "./../../R.png"
-import { team } from "../../functions/teams";
+import { team } from "../../functions/objects";
 
 import { useEffect, useState } from "react"
 
@@ -69,7 +69,7 @@ function SettingsForm({ settigns, setSettings, setGameState }) {
     }
 
     const [dictionary, setDictionary] = useState("uib")
-    const [time, setTime] = useState(0)
+    const [time, setTime] = useState()
     const [halfShortTerms, setHalfShortTerms] = useState(true)
 
 
@@ -91,7 +91,7 @@ function SettingsForm({ settigns, setSettings, setGameState }) {
             <p>Spille med klokke?</p>
 
             <label className="container">
-                <input type="number" min="0" value={time} onChange={(e)=>setTime(e.target.value)} />  Minutter per trekk
+                <input type="number" min="0" value={time} placeholder={"tid"} onChange={(e)=>setTime(e.target.value)} />  Minutter per trekk
             </label>
 
             <p>Halve poeng for forkortelser?</p>
@@ -112,9 +112,9 @@ function SettingsForm({ settigns, setSettings, setGameState }) {
 
 
 function Homepage({ teams, setTeams, settings, setSettings, setGameState }) {
-    // useEffect(() =>
-    //     setTeams([new team("Eira og Vårin"), new team("Bendik og Jørgen")])
-    // , [])
+    useEffect(() =>
+        setTeams([new team("Eira og Vårin"), new team("Bendik og Jørgen")])
+    , [])
 
     return (
         <div className="homepage">
