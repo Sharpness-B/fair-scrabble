@@ -83,10 +83,10 @@ function SettingsForm({ settigns, setSettings, setGameState }) {
                 <input type="radio" defaultChecked name="radio" />
                 <span className="checkmark"></span>
             </label>
-            <label className="container" onClick={()=>setDictionary("naob")}> Naob
+            {/* <label className="container" onClick={()=>setDictionary("naob")}> Naob
                 <input type="radio" name="radio" />
                 <span className="checkmark"></span>
-            </label>
+            </label> */}
 
             <p>Spille med klokke?</p>
 
