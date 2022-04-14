@@ -18,7 +18,7 @@ function App() {
           gameState === "registrer" ?
             <Homepage teams={teams} setTeams={setTeams} settings={settings} setSettings={setSettings} setGameState={setGameState} />
           : gameState === "game" ?
-            <Game teams={teams} />
+            <Game teams={teams} settings={settings} />
           : null
         }
       </header>

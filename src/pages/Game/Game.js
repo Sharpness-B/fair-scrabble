@@ -1,6 +1,7 @@
 import "./Game.css"
 
-function Game() {
+function Game({teams, settings}) {
+    console.log(teams, settings)
     return (
       <>
       </>

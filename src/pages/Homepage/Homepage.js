@@ -68,36 +68,48 @@ function SettingsForm({ settigns, setSettings, setGameState }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(e)
-        // setSettings({})
-        // setGameState("game")
+        setSettings({
+            dictionary: dictionary,
+            time: time,
+            halfShortTerms: halfShortTerms
+        })
+
+        setGameState("game")
     }
+
+    const [dictionary, setDictionary] = useState("uib")
+    const [time, setTime] = useState(0)
+    const [halfShortTerms, setHalfShortTerms] = useState(true)
+
+
 
     return (
         <form onSubmit={handleSubmit} className={"settings-form"}>
 
             <p>Velg ordbok</p>
 
-            <label class="container"> UiB
+            <label className="container" onClick={()=>setDictionary("uib")}> UiB
                 <input type="radio" defaultChecked name="radio" />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
             </label>
-            <label class="container"> Naob
+            <label className="container" onClick={()=>setDictionary("naob")}> Naob
                 <input type="radio" name="radio" />
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
             </label>
 
             <p>Spille med klokke?</p>
 
-            <label class="container">
-                <input type="number" name="time" min="0" defaultValue="0" />  Minutter per trekk
+            <label className="container">
+                <input type="number" min="0" value={time} onChange={(e)=>setTime(e.target.value)} />  Minutter per trekk
             </label>
 
             <p>Halve poeng for forkortelser?</p>
 
-            <label class="container"> Jørgens regel
-                <input type="checkbox" defaultChecked />
-                <span class="checkmark"></span>
+            <label className="container"> Jørgens regel
+                <div onClick={() => setHalfShortTerms(prev=>!prev)}>
+                    <input type="checkbox" defaultChecked />
+                    <span className="checkmark"></span>
+                </div>
             </label>
 
             <button className="button-start">Start</button>
@@ -109,11 +121,9 @@ function SettingsForm({ settigns, setSettings, setGameState }) {
 
 
 function Homepage({ teams, setTeams, settings, setSettings, setGameState }) {
-    useEffect(() =>
-        setTeams([new team("Eira og Vårin"), new team("Bendik og Jørgen")])
-        , [])
-
-    console.log(teams)
+    // useEffect(() =>
+    //     setTeams([new team("Eira og Vårin"), new team("Bendik og Jørgen")])
+    // , [])
 
     return (
         <div className="homepage">
