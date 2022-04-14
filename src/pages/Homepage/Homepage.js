@@ -22,7 +22,7 @@ function ListTeams({teams}) {
     )
 }
 
-function TeamsFrom({setTeams}) {
+function TeamsForm({setTeams}) {
 
     const [userInput, setUserInput] = useState('');
 
@@ -62,7 +62,7 @@ function Homepage({teams, setTeams}) {
         <p>Regsitrer lag, velg regler og ordbok.</p>
 
         <ListTeams teams={teams} />
-        <TeamsFrom setTeams={setTeams} />
+        <TeamsForm setTeams={setTeams} />
       </div>
     );
 }

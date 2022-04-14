@@ -10,13 +10,14 @@ function App() {
   const [gameState, setGameState] = useState("registrer")
 
   const [teams, setTeams] = useState([])
+  const [settings, setSettings] = useState({})
 
   return (
     <div className="App">
       <header className="App-header">
         { 
           gameState === "registrer" ?
-            <Homepage teams={teams} setTeams={setTeams} />
+            <Homepage teams={teams} setTeams={setTeams} settings={settings} setSettings={setSettings} />
           : gameState === "game" ?
             <Game teams={teams} />
           : null
