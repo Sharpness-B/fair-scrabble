@@ -3,6 +3,10 @@
     pointer-events: none;
 }
 
+ul {
+    list-style: none;
+}
+
 @media (prefers-reduced-motion: no-preference) {
     .App-logo {
         animation: App-logo-spin infinite 40s linear;

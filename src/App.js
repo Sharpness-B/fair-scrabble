@@ -9,16 +9,16 @@ import {useState} from 'react'
 function App() {
   const [gameState, setGameState] = useState("registrer")
 
-  const [settings, setSettings] = useState({})
+  const [teams, setTeams] = useState([])
 
   return (
     <div className="App">
       <header className="App-header">
         { 
           gameState === "registrer" ?
-            <Homepage settings={settings} setSettings={setSettings} />
+            <Homepage teams={teams} setTeams={setTeams} />
           : gameState === "game" ?
-            <Game settings={settings} />
+            <Game teams={teams} />
           : null
         }
       </header>
