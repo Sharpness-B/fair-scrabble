@@ -1,17 +1,8 @@
 import "./Homepage.css"
 import logo from "./../../R.png"
-import { v4 as uuid } from 'uuid';
+import { team } from "../../functions/teams";
 
 import { useEffect, useState } from "react"
-
-class team {
-    constructor(teamName) {
-        this.id = uuid()
-        this.teamName = teamName
-        this.score = 0
-    }
-}
-
 
 
 function ListTeams({ teams, setTeams }) {
