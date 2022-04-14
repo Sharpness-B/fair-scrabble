@@ -122,10 +122,10 @@ function Game({teams, settings, whosTurn, setWhosTurn}) {
                 <button>Protest</button>
             </form>
 
-    velg hvem som tar protest
+    {/* velg hvem som tar protest filter den som ikke sin tur det er hent id  
       protestknapp
 
-resultatliste
+resultatliste */}
       </div>
     );
 }
