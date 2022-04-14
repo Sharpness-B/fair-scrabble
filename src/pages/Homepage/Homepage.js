@@ -62,7 +62,7 @@ function SettingsForm({ settigns, setSettings, setGameState }) {
         setSettings({
             dictionary: dictionary,
             time: time,
-            halfShortTerms: halfShortTerms
+            halfScoreForShortTerms: halfScoreForShortTerms
         })
 
         setGameState("game")
@@ -70,7 +70,7 @@ function SettingsForm({ settigns, setSettings, setGameState }) {
 
     const [dictionary, setDictionary] = useState("uib")
     const [time, setTime] = useState()
-    const [halfShortTerms, setHalfShortTerms] = useState(true)
+    const [halfScoreForShortTerms, setHalfShortTerms] = useState(true)
 
 
 
