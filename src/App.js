@@ -1,22 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
 
+import Homepage from './pages/Homepage/Homepage';
+import Game from './pages/Game/Game';
+
+import {useState} from 'react'
+
 function App() {
+  const [gameState, setGameState] = useState("registrer")
+
+  const [settings, setSettings] = useState({})
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        { 
+          gameState === "registrer" ?
+            <Homepage settings={settings} setSettings={setSettings} />
+          : gameState === "game" ?
+            <Game settings={settings} />
+          : null
+        }
       </header>
     </div>
   );
