@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 import Homepage from './pages/Homepage/Homepage';
@@ -17,7 +16,7 @@ function App() {
       <header className="App-header">
         { 
           gameState === "registrer" ?
-            <Homepage teams={teams} setTeams={setTeams} settings={settings} setSettings={setSettings} />
+            <Homepage teams={teams} setTeams={setTeams} settings={settings} setSettings={setSettings} setGameState={setGameState} />
           : gameState === "game" ?
             <Game teams={teams} />
           : null

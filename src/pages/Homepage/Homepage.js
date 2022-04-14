@@ -1,26 +1,37 @@
 import "./Homepage.css"
-// import logo from  "./../../logo.svg"
 import logo from  "./../../R.png"
+import { v4 as uuid } from 'uuid';
 
 import {useEffect, useState} from "react"
 
 class team {
     constructor (teamName) {
+        this.id = uuid()
         this.teamName = teamName
         this.score = 0
     }
 }
 
 
-function ListTeams({teams}) {
+
+function ListTeams({teams, setTeams}) {
+    const removeTeam = (e) => {
+        const id = e.currentTarget.id
+        const filtered = teams.filter(teamobj => teamobj.id !== id)
+
+        setTeams(filtered)
+    }
+
     return (
         <ul>
             {teams.map((teamobj, i) =>
-                <li key={i}>{teamobj.teamName}</li>
+                <li onClick={removeTeam} key={i} id={teamobj.id}>{teamobj.teamName}</li>
             )}
         </ul>
     )
 }
+
+
 
 function TeamsForm({setTeams}) {
 
@@ -33,6 +44,8 @@ function TeamsForm({setTeams}) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if (!userInput) return
+
         setTeams(currentteams => 
             [ ...currentteams, new team(userInput) ]
         )
@@ -41,14 +54,41 @@ function TeamsForm({setTeams}) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={"teams-form"}>
             <input value={userInput} type="text" onChange={handleChange} placeholder="lagnavn"/>
-            <button>Submit</button>
+            <button>Legg til</button>
         </form>
     )
 }
 
-function Homepage({teams, setTeams}) {
+
+
+function SettingsForm({settigns, setSettings, setGameState}) {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        console.log(e)
+        // setSettings({})
+        // setGameState("game")
+    }
+
+    return (
+        <form onSubmit={handleSubmit} className={"settings-form"}>
+            <input type="radio" name="dict" defaultChecked/> UiB
+            <input type="radio" name="dict" /> NAOB
+
+            <input type="number" name="time" min="0" defaultValue="0" /> Klokke
+
+            <input type="checkbox" name="shortTerms" defaultChecked /> Halve poeng for forkortelser
+
+            <button>Start</button>
+        </form>
+    )
+}
+
+
+
+function Homepage({teams, setTeams, settings, setSettings, setGameState}) {
     useEffect( () =>
         setTeams([new team("Eira og Vårin"), new team("Bendik og Jørgen")])
     , [])
@@ -61,8 +101,9 @@ function Homepage({teams, setTeams}) {
         <h1>Rettferdig Scrabble</h1>
         <p>Regsitrer lag, velg regler og ordbok.</p>
 
-        <ListTeams teams={teams} />
+        <ListTeams teams={teams} setTeams={setTeams} />
         <TeamsForm setTeams={setTeams} />
+        <SettingsForm settigns={settings} setSettings={setSettings} setGameState={setGameState} />
       </div>
     );
 }
