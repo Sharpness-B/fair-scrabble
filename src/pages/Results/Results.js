@@ -13,7 +13,7 @@ function Results({teams, setGameState, setTeams}) {
 
   return (
     <div>
-      <table>
+      <table className="table-results">
         {/* <tHead> */}
           <tr>
             <th>Lagnavn</th>

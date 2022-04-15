@@ -71,7 +71,7 @@ button {
 .container {
     display: block;
     position: relative;
-    padding-left: 35px;
+    /* padding-left: 35px; */
     margin-bottom: 12px;
     cursor: pointer;
     font-size: 22px;
@@ -79,6 +79,9 @@ button {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
+    max-width: 80vw;
+    margin: 0 auto;
   }
   
   /* Hide the browser's default radio button */
