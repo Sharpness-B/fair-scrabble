@@ -143,11 +143,15 @@ function Game({teams, settings, whosTurn, setWhosTurn, setGameState}) {
                 protestingTeam.addToScore( -10 )
 
                 handleMove()
+
+                alert(`Ordene er godkjent. ${protestingTeam.teamName} mister 10 poeng.`)
             }
 
             else {
                 clearWords()
                 nextPlayer()
+
+                alert(`Ordene er ikke godkjent. ${currentTeam.teamName} mister turen sin.`)
             }
         });
     }
