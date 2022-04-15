@@ -2,7 +2,7 @@ import './App.css';
 
 import Homepage from './pages/Homepage/Homepage';
 import Game from './pages/Game/Game';
-import Timer from './pages/Timer/Timer';
+import Results from './pages/Results/Results';
 
 import {useState} from 'react'
 
@@ -21,10 +21,10 @@ function App() {
             <Homepage teams={teams} setTeams={setTeams} settings={settings} setSettings={setSettings} setGameState={setGameState} />
           
           : gameState === "game" ?
-            <Game teams={teams} settings={settings} whosTurn={whosTurn} setWhosTurn={setWhosTurn} />
+            <Game teams={teams} settings={settings} whosTurn={whosTurn} setWhosTurn={setWhosTurn} setGameState={setGameState} />
           
-          : gameState === "timer" ?
-            <Timer teams={teams} settings={settings} whosTurn={whosTurn} setWhosTurn={setWhosTurn} />
+          : gameState === "results" ?
+            <Results teams={teams} setGameState={setGameState} />
           
           : null
         }

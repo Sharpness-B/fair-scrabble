@@ -10,7 +10,7 @@ import { checkUib } from "../../functions/checkDict";
 
 
 
-function ListWords({ words, setWords }) {
+function ListWords({ words, setWords}) {
     const removeWord = (e) => {
         const id = e.currentTarget.id
         const filtered = words.filter(wordobj => wordobj.id !== id)
@@ -88,7 +88,7 @@ function Timer({time, currentTeamID}) {
     )
 }
 
-function Game({teams, settings, whosTurn, setWhosTurn}) {
+function Game({teams, settings, whosTurn, setWhosTurn, setGameState}) {
     // console.log(teams, settings)
 
     const [words, setWords] = useState([])
@@ -182,6 +182,8 @@ function Game({teams, settings, whosTurn, setWhosTurn}) {
                 }
                 <button>Protest</button>
             </form>
+
+            <button onClick={()=>setGameState("results")}>Se resultatliste</button>
 
     {/* fjern markering
 
