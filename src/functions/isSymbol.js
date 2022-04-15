@@ -10,6 +10,10 @@ async function isSymbol(word) {
 
     const wordIsSymbol = await checkSymbol(articleID)
 
+    if (wordIsSymbol) {
+        alert(`${word} er en forkortelse og gir halvpaprten så mange poeng!`)
+    }
+
     return wordIsSymbol
 }
 
