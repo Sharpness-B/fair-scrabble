@@ -1,5 +1,7 @@
 import "./Game.css"
 
+import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+
 import {useState} from "react"
 
 import { word } from "../../functions/objects";
@@ -109,6 +111,24 @@ function Game({teams, settings, whosTurn, setWhosTurn}) {
 
     return (
         <div>
+            { settings.time &&
+                <div className="container-timer">
+                    <CountdownCircleTimer
+                        key={currentTeam.id}
+                        isPlaying
+                        duration={settings.time * 60}
+                        colors={['#004777', '#F7B801', '#A30000', '#A30000']}
+                        colorsTime={[settings.time*60, settings.time*60*2/3, settings.time*60*1/3, 0]}
+                    >
+                        {({ remainingTime }) => {
+                            const minutes = Math.floor(remainingTime / 60)
+                            const seconds = remainingTime % 60
+                        
+                            return remainingTime ? `${minutes}:${seconds}` : "Tiden er ute!"
+                        }}
+                    </CountdownCircleTimer>
+                </div>
+            }
 
             <h1>{currentTeam.teamName} sin tur</h1>
 
