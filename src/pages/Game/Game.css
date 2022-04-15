@@ -6,3 +6,9 @@
     border-radius: 4px;
     padding: 14px 20px;
 }
+
+.container-timer {
+    position: absolute;
+    top:  1rem;
+    left: 1rem;
+}
