@@ -9,4 +9,8 @@ This app fixes uncomfortable family discussions by providing:
 
 [https://en.wikipedia.org/wiki/Challenge_(Scrabble)](https://en.wikipedia.org/wiki/Challenge_(Scrabble))
 
+![homepage](readme_images/homepage.png?raw=true)
+![game](readme_images/game.png?raw=true)
+![results](readme_images/results.png?raw=true)
+
 Currently available with Norwegian dictionary only.
