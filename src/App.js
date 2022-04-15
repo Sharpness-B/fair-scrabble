@@ -23,10 +23,8 @@ function App() {
           : gameState === "game" ?
             <Game teams={teams} settings={settings} whosTurn={whosTurn} setWhosTurn={setWhosTurn} setGameState={setGameState} />
           
-          : gameState === "results" ?
-            <Results teams={teams} setGameState={setGameState} />
-          
-          : null
+          : gameState === "results" &&
+            <Results teams={teams} setGameState={setGameState} setTeams={setTeams} />
         }
       </header>
     </div>

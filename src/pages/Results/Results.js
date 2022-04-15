@@ -1,6 +1,6 @@
 import "./Results.css"
 
-function Results({teams, setGameState}) {
+function Results({teams, setGameState, setTeams}) {
   function compare( a, b ) {
     if ( a.score > b.score ){
       return -1;
@@ -31,8 +31,14 @@ function Results({teams, setGameState}) {
       </table>
 
       <form>
-        <button onClick={()=>setGameState("game")}>Tilbake til spill</button>
-        <button onClick={()=>setGameState("initializing")}>Nytt spill</button>
+        <button onClick={() => 
+          setGameState("game")
+        }>Tilbake til spill</button>
+
+        <button onClick={()=>{
+          setTeams([])
+          setGameState("initializing")
+        }}>Nytt spill</button>
       </form>
     </div>
   );
