@@ -8,7 +8,9 @@
 }
 
 .container-timer {
-    position: absolute;
+    /* position: absolute;
     top:  1rem;
-    left: 1rem;
+    left: 1rem; */
+    margin: 0 auto;
+    width: fit-content;
 }

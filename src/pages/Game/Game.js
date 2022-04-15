@@ -8,6 +8,8 @@ import { word } from "../../functions/objects";
 import { isSymbol } from "../../functions/isSymbol";
 import { checkUib } from "../../functions/checkDict";
 
+
+
 function ListWords({ words, setWords }) {
     const removeWord = (e) => {
         const id = e.currentTarget.id
@@ -63,8 +65,28 @@ function WordsForm({ setWords }) {
 
 
 
-
-function Timer(){}
+function Timer({time, currentTeamID}) {
+    return (
+        <div className="container-timer">
+            { time > 0 &&
+            <CountdownCircleTimer
+                key={currentTeamID}
+                isPlaying
+                duration={time * 60}
+                colors={['#004777', '#F7B801', '#A30000', '#A30000']}
+                colorsTime={[time*60, time*60*2/3, time*60*1/3, 0]}
+            >
+                {({ remainingTime }) => {
+                    const minutes = Math.floor(remainingTime / 60)
+                    const seconds = remainingTime % 60
+                
+                    return remainingTime ? `${minutes}:${seconds}` : "Tiden er ute!"
+                }}
+            </CountdownCircleTimer>
+            }
+        </div>
+    )
+}
 
 function Game({teams, settings, whosTurn, setWhosTurn}) {
     // console.log(teams, settings)
@@ -138,24 +160,7 @@ function Game({teams, settings, whosTurn, setWhosTurn}) {
 
     return (
         <div>
-            { settings.time > 0 &&
-                <div className="container-timer">
-                    <CountdownCircleTimer
-                        key={currentTeam.id}
-                        isPlaying
-                        duration={settings.time * 60}
-                        colors={['#004777', '#F7B801', '#A30000', '#A30000']}
-                        colorsTime={[settings.time*60, settings.time*60*2/3, settings.time*60*1/3, 0]}
-                    >
-                        {({ remainingTime }) => {
-                            const minutes = Math.floor(remainingTime / 60)
-                            const seconds = remainingTime % 60
-                        
-                            return remainingTime ? `${minutes}:${seconds}` : "Tiden er ute!"
-                        }}
-                    </CountdownCircleTimer>
-                </div>
-            }
+            <Timer time={settings.time} currentTeamID={currentTeam.id} />
 
             <h1>{currentTeam.teamName} sin tur</h1>
 
@@ -169,7 +174,7 @@ function Game({teams, settings, whosTurn, setWhosTurn}) {
             <form onSubmit={handleProtest}>
                 {teams.filter(teamobj => teamobj.id !== currentTeam.id)
                     .map(teamobj => 
-                        <label className="container" onClick={()=>setProtestingTeamID(teamobj.id)}> {teamobj.teamName}
+                        <label key={teamobj.id} className="container" onClick={()=>setProtestingTeamID(teamobj.id)}> {teamobj.teamName}
                             <input type="radio" name="radio" />
                             <span className="checkmark"></span>
                         </label>
@@ -178,8 +183,7 @@ function Game({teams, settings, whosTurn, setWhosTurn}) {
                 <button>Protest</button>
             </form>
 
-    {/* velg hvem som tar protest filter den som ikke sin tur det er hent id  
-      protestknapp
+    {/* fjern markering
 
 resultatliste */}
       </div>
