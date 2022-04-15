@@ -89,8 +89,6 @@ function Timer({time, currentTeamID}) {
 }
 
 function Game({teams, settings, whosTurn, setWhosTurn, setGameState}) {
-    // console.log(teams, settings)
-
     const [words, setWords] = useState([])
 
     const [protestingTeamID, setProtestingTeamID] = useState("")
@@ -140,8 +138,6 @@ function Game({teams, settings, whosTurn, setWhosTurn, setGameState}) {
         Promise.all(validationArr).then((values) => {
             const isValidMove = values.every(element => element.isWord === true);
 
-            console.log(values)
-
             if (isValidMove) {
                 const protestingTeam = teams.find(teamobj => teamobj.id === protestingTeamID)
                 protestingTeam.addToScore( -10 )
@@ -155,8 +151,6 @@ function Game({teams, settings, whosTurn, setWhosTurn, setGameState}) {
             }
         });
     }
-
-    console.log(currentTeam.score)
 
     return (
         <div>
