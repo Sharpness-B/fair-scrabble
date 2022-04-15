@@ -177,11 +177,9 @@ function Game({teams, settings, whosTurn, setWhosTurn, setGameState}) {
                 <button>Protest</button>
             </form>
 
+            <p>Resultatliste</p>
+
             <button onClick={()=>setGameState("results")}>Se resultatliste</button>
-
-    {/* fjern markering
-
-resultatliste */}
       </div>
     );
 }
