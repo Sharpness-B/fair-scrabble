@@ -30,8 +30,10 @@ function Results({teams, setGameState}) {
         {/* </tBody> */}
       </table>
 
-      <button onClick={()=>setGameState("game")}>Tilbake til spill</button>
-      <button onClick={()=>setGameState("initializing")}>Nytt spill</button>
+      <form>
+        <button onClick={()=>setGameState("game")}>Tilbake til spill</button>
+        <button onClick={()=>setGameState("initializing")}>Nytt spill</button>
+      </form>
     </div>
   );
 }
