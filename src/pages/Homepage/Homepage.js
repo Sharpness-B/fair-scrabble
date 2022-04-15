@@ -55,7 +55,7 @@ function TeamsForm({ setTeams }) {
 
 
 
-function SettingsForm({ settigns, setSettings, setGameState }) {
+function SettingsForm({ teams, settigns, setSettings, setGameState }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -65,6 +65,11 @@ function SettingsForm({ settigns, setSettings, setGameState }) {
             halfScoreForShortTerms: halfScoreForShortTerms
         })
 
+        if (teams.length === 0) {
+            alert("Husk å registrere lag!")
+            return
+        }
+        
         setGameState("game")
     }
 
@@ -123,7 +128,7 @@ function Homepage({ teams, setTeams, settings, setSettings, setGameState }) {
 
             <ListTeams teams={teams} setTeams={setTeams} />
             <TeamsForm setTeams={setTeams} />
-            <SettingsForm settigns={settings} setSettings={setSettings} setGameState={setGameState} />
+            <SettingsForm teams={teams} settigns={settings} setSettings={setSettings} setGameState={setGameState} />
         </div>
     );
 }
