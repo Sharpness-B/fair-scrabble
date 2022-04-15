@@ -6,6 +6,7 @@ import {useState} from "react"
 
 import { word } from "../../functions/objects";
 import { isSymbol } from "../../functions/isSymbol";
+import { checkUib } from "../../functions/checkDict";
 
 function ListWords({ words, setWords }) {
     const removeWord = (e) => {
@@ -70,6 +71,8 @@ function Game({teams, settings, whosTurn, setWhosTurn}) {
 
     const [words, setWords] = useState([])
 
+    const [protestingTeamID, setProtestingTeamID] = useState("")
+
     const currentTeam = teams[whosTurn]
 
 
@@ -107,11 +110,35 @@ function Game({teams, settings, whosTurn, setWhosTurn}) {
         nextPlayer()
     }
 
+    const handleProtest = async (e) => {
+        e.preventDefault();
+
+        const validationArr = words.map(wordobj => checkUib(wordobj.word) )
+
+        Promise.all(validationArr).then((values) => {
+            const isValidMove = values.every(element => element.isWord === true);
+
+            console.log(values)
+
+            if (isValidMove) {
+                const protestingTeam = teams.find(teamobj => teamobj.id === protestingTeamID)
+                protestingTeam.addToScore( -10 )
+
+                handleMove()
+            }
+
+            else {
+                clearWords()
+                nextPlayer()
+            }
+        });
+    }
+
     console.log(currentTeam.score)
 
     return (
         <div>
-            { settings.time &&
+            { settings.time > 0 &&
                 <div className="container-timer">
                     <CountdownCircleTimer
                         key={currentTeam.id}
@@ -138,7 +165,16 @@ function Game({teams, settings, whosTurn, setWhosTurn}) {
             <button onClick={handleMove}>Spill</button>
 
             <p>Protest</p>
-            <form>
+
+            <form onSubmit={handleProtest}>
+                {teams.filter(teamobj => teamobj.id !== currentTeam.id)
+                    .map(teamobj => 
+                        <label className="container" onClick={()=>setProtestingTeamID(teamobj.id)}> {teamobj.teamName}
+                            <input type="radio" name="radio" />
+                            <span className="checkmark"></span>
+                        </label>
+                    )
+                }
                 <button>Protest</button>
             </form>
 
