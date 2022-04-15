@@ -112,9 +112,9 @@ function SettingsForm({ settigns, setSettings, setGameState }) {
 
 
 function Homepage({ teams, setTeams, settings, setSettings, setGameState }) {
-    useEffect(() =>
-        setTeams([new team("Eira og Vårin"), new team("Bendik og Jørgen")])
-    , [])
+    // useEffect(() =>
+    //     setTeams([new team("Eira og Vårin"), new team("Bendik og Jørgen")])
+    // , [])
 
     return (
         <div className="homepage">
