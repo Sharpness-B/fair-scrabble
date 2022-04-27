@@ -12,9 +12,9 @@ import { team } from './functions/objects';
 
 function CookieConsentModal({setShowCookieConsentModal, setCookieConsent}) {
   return (
-    <div className='CookieConsentModal'>
+    <div>
       <p>Denne appen bruker cookies for å sørge for at du ikke mister spillet, er det ok?</p>
-      <div className='buttonsContainer'>
+      <div>
         <button onClick={()=>{setCookieConsent(true) ; setShowCookieConsentModal(false)}}>Ja</button>
         <button onClick={()=>{setCookieConsent(false); setShowCookieConsentModal(false)}}>Nei</button>
       </div>
