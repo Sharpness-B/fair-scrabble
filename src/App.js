@@ -54,7 +54,7 @@ function App() {
   useEffect(() => {
     if (!cookieConsent) return;
     
-    if (gameState==="initializing" && teams.length===0) return
+    if (gameState==="initializing" && teams.length===0 && cookieConsent===false) return
 
     cookie.createCookie(
       "fair-scrabble", 
