@@ -1,10 +1,10 @@
 import { v4 as uuid } from 'uuid';
 
 class team {
-    constructor(teamName) {
-        this.id = uuid()
+    constructor(teamName, id, score) {
         this.teamName = teamName
-        this.score = 0
+        this.id = id || uuid()
+        this.score = score || 0
     }
 
     addToScore(scoreToAdd) {
