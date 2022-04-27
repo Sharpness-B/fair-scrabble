@@ -52,6 +52,7 @@ function WordsForm({ setWords }) {
         )
 
         setUserInput("");
+        setUserInputNumber("")
     }
 
     return (
