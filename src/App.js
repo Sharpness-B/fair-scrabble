@@ -21,8 +21,6 @@ function App() {
     const data = JSON.parse( 
       cookie.readCookie("fair-scrabble") 
     )
-
-    console.log(data)
     
     setGameState( data.gameState )
     setTeams    ( data.teams.map(obj => new team(obj.teamName, obj.id, obj.score)) )
