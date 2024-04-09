@@ -9,6 +9,7 @@ This app fixes uncomfortable family discussions by providing:
 
 [https://en.wikipedia.org/wiki/Challenge_(Scrabble)](https://en.wikipedia.org/wiki/Challenge_(Scrabble))
 
+Give it a go: [https://fair-scrabble-4vqxhb0f2-sharpness-b.vercel.app](https://fair-scrabble-4vqxhb0f2-sharpness-b.vercel.app/)
 ![homepage](readme_images/homepage.png?raw=true)
 ![game](readme_images/game.png?raw=true)
 ![results](readme_images/results.png?raw=true)
